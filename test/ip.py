@@ -8,5 +8,3 @@ socks_proxy = { 'http': tor_proxy,
 current_ip = requests.get(url='http://icanhazip.com/',proxies=socks_proxy,verify=False)
 
 print(current_ip.text)
-
-

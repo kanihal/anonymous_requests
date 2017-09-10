@@ -33,3 +33,5 @@ elif(r.status_code == 429):
     tor.get_new_ip()
     print("With TOR,new ip = ", tor.ip())
 
+
+#ua = UserAgent()

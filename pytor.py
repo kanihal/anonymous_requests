@@ -9,7 +9,7 @@ Intially forked from https://github.com/bdheath/pytor -  This code was not prope
 from stem.control import Controller
 from stem import Signal
 import requests
-
+from fake_useragent import UserAgent
 from datetime import datetime
 
 
@@ -17,6 +17,7 @@ from datetime import datetime
 
 
 class PyTor:
+    BAD_STATUS_CODES = [429]
     def __init__(self, host='localhost', socks_port=9050, need_control=False, control_port=9051, password=''):
 
         self.host = host
@@ -27,6 +28,7 @@ class PyTor:
         self.proxies = {}
         self.proxies['http'] = 'socks5://' + str(self.host) + ':' + str(self.socks_port)
         self.proxies['https'] = 'socks5://' + str(self.host) + ':' + str(self.socks_port)
+        # TODO maintain a "status code list" to intiate renew connection
 
         if self.need_control:
             self.controller = Controller.from_port(address=self.host, port=control_port)
@@ -41,7 +43,7 @@ class PyTor:
         return response
 
     def post(self):
-        # TODO - get post : pass along the kwargs
+        # TODO - post : pass along the kwargs
         pass
 
     def ip(self):
