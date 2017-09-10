@@ -1,0 +1,3 @@
+[submodule "fake-useragent"]
+	path = fake-useragent
+	url = https://github.com/kanihal/fake-useragent
